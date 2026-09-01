@@ -81,9 +81,7 @@ PAID + Paid_Time
    ![Step2-1](assets/L02-2.png)
 2. ตรวจสอบและกำหนด Key ของแต่ละ Table
    
-   <video controls width="800">
-        <source src="assets/L2-1.mp4" type="video/mp4">
-   </video>
+   [▶️ ดูวิดีโอ StepVDO2-1](assets/L2-1.mp4)
    
    **Table: `Menu`** ใช้เก็บรายการอาหาร
    
@@ -92,7 +90,7 @@ PAID + Paid_Time
    **Table: `Tables`** ใช้เก็บข้อมูลโต๊ะ
       -   `Table_ID` → Key
       -   `Table_Name` → Label
-      -   
+          
    **Table: `Orders`** เก็บข้อมูลหัวออเดอร์
       ตั้งค่า:
       
