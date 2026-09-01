@@ -272,11 +272,13 @@ PAID + Paid_Time
           ![step3-1](assets/L2-13.png)
 
 8.  ปรับรูปการแสดงผลของ Order Detail
-    ![step3-1](assets/L2-11.png)
+   
+     ![step4-11](assets/L2-11.png)
+    
 
 ## Output Step 4
 
-      ![step3-1](assets/L2-14.png)
+      ![step4-14](assets/L2-14.png)
 ------------------------------------------------------------------------
 
 # 5. คำนวณราคาของแต่ละเมนู
