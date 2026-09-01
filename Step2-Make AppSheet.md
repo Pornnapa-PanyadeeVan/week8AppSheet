@@ -275,10 +275,13 @@ PAID + Paid_Time
    
      ![step4-11](assets/L2-11.png)
     
-
 **Output Step 4**
+    ![Step4-out](assets/L2-14.png)
+    
 
-      ![Step4-out](assets/L2-14.png)
+
+
+      
       
 ------------------------------------------------------------------------
 
