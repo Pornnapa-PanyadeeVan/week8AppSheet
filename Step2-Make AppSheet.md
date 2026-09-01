@@ -181,7 +181,7 @@ PAID + Paid_Time
       ``` appsheet
       [Quantity] * [Unit_Price]
       ```
-      ![step3-1](assets/L2-12.png)
+      ![Step4-cal](assets/L2-12.png)
 
 5.เลือกเฉพาะโต๊ะที่ว่าง
       **Data → Columns → Orders → Table_ID**
