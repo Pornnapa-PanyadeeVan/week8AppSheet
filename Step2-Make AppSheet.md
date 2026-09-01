@@ -167,7 +167,23 @@ PAID + Paid_Time
       ระบบจะคำนวณ Total Amount ให้อัตโนมัติ
       ![step3-1](assets/L2-8.png)
 
-   4. เลือกเฉพาะโต๊ะที่ว่าง
+4. คำนวณราคาของแต่ละเมนู
+   ใน `Order_details[Unit_Price]` สามารถดึงราคาจาก Menu
+
+      ตัวอย่าง App Formula:
+      
+      ``` appsheet
+      [Menu_ID].[Price]
+      ```
+      
+      จากนั้น `Subtotal`
+      
+      ``` appsheet
+      [Quantity] * [Unit_Price]
+      ```
+      ![step3-1](assets/L2-12.png)
+
+5.เลือกเฉพาะโต๊ะที่ว่าง
       **Data → Columns → Orders → Table_ID**
        กำหนด `Valid If`
       
@@ -192,7 +208,7 @@ PAID + Paid_Time
 
       ![step3-1](assets/L2-9.png)
 
-   5. เปลี่ยนโต๊ะเป็นไม่ว่างเมื่อรับ Order
+6. เปลี่ยนโต๊ะเป็นไม่ว่างเมื่อรับ Order
       สร้าง Action ที่ Table `Tables`
 
       ## Action: `Table Unavailable`
@@ -252,7 +268,15 @@ PAID + Paid_Time
       ```
       ![step3-1](assets/L2-10.png)
 
-      
+      **เพิ่ม Action ใน View ของ Order
+          ![step3-1](assets/L2-13.png)
+
+8.  ปรับรูปการแสดงผลของ Order Detail
+    ![step3-1](assets/L2-11.png)
+
+## Output Step 4
+
+      ![step3-1](assets/L2-14.png)
 ------------------------------------------------------------------------
 
 # 5. คำนวณราคาของแต่ละเมนู
