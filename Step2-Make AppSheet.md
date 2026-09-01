@@ -122,7 +122,7 @@ PAID + Paid_Time
       Order Form เดียวได้
 
       **หมายเหตุ การเปลี่ยนสกุลเงิน
-     ![Currency](assets/L2-5.png)
+     <img src="assets/L2-5.png" alt="Currency" width="400">
 ------------------------------------------------------------------------
 
 # Step 3. สร้างหน้า Page Menu
