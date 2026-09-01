@@ -317,7 +317,7 @@ Row filter condition:
 ------------------------------------------------------------------------
 # Step 6. สร้างหน้า KITCHEN & PAYMENT
 
-1. สร้าง View:
+**1. สร้าง View:**
 
 ``` text
 View name:
@@ -359,7 +359,7 @@ Total_Amount
 
 
 
-2. สร้าง Dropdown สถานะ Order
+**2. สร้าง Dropdown สถานะ Order**
 
 ไปที่
 
@@ -390,7 +390,7 @@ PAID
 NEW → PREPARING → SERVED → PAID
 ```
 
-3. ให้แก้สถานะจากหน้า Detail
+**3. ให้แก้สถานะจากหน้า Detail**
 
 ไปที่
 
@@ -410,7 +410,7 @@ READY
 SERVED
 ```
 
-4. สร้างปุ่ม "ชำระเงิน"
+**4. สร้างปุ่ม "ชำระเงิน"**
 
 ไม่แนะนำให้พนักงานเลือก `PAID` ด้วย Dropdown โดยตรง
 เพราะตอนชำระเงินระบบต้องทำหลายอย่างพร้อมกัน:
@@ -421,7 +421,7 @@ SERVED
 
 จึงสร้าง Action สำหรับ Payment
 
-5.  Action: `Mark Paid`
+**5.  Action: `Mark Paid`**
 
 Table:
 
@@ -451,7 +451,7 @@ Only if:
 [Order_Status] = "SERVED"
 ```
 
-6. Action: `Table Available`
+**6. Action: `Table Available`**
 
 Table:
 
@@ -471,7 +471,7 @@ Set:
 Table_Status = 0
 ```
 
-7. Action: `Release Table`
+**7. Action: `Release Table`**
 
 Table:
 
@@ -503,7 +503,7 @@ Referenced Action:
 Table Available
 ```
 
-8. Grouped Action: `Payment`
+**8. Grouped Action: `Payment`**
 
 สร้าง Action:
 
