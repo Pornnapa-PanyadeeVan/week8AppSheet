@@ -132,7 +132,10 @@ SERVED
 ---
 
 ## วิธีการสร้าง Google Sheet
-1. เข้า ![Google Drive](https://drive.google.com/drive/home) โดยใช้ Account Google ในการ login
+1. เข้า [Google Drive](https://drive.google.com/drive/home) โดยใช้ Account Google ในการ login
 2. สร้าง folder ชื่อ `703311-Week8AppSheet`
-3. สร้าง Google Sheet ชื่อ `LannaEats App`
-4. สร้าง Google Sheets จำนวน 4 Sheet
+       - เลือก + New
+       - เลือก New Folder
+       - ตั้งชื่อ Folder `703311-Week8AppSheet`
+4. สร้าง Google Sheet ชื่อ `LannaEats App`
+5. สร้าง Google Sheets จำนวน 4 Sheet
