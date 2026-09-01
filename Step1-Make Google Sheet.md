@@ -12,7 +12,7 @@ Google Sheets
 │   ├── Table_ID
 │   ├── Table_Name
 │   ├── Capacity
-│   └── Is_Occupied
+│   └── Table_Status
 │
 ├── Menu
 │   ├── Menu_ID
