@@ -558,6 +558,8 @@ Only if:
 
 ![step6 kitchen](assets/L2-22.png)
 
+![step6 kitchen](assets/L2-23.png)
+
 ------------------------------------------------------------------------
 
 # Set 7. Workflow การชำระเงิน
