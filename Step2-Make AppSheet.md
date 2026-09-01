@@ -135,58 +135,26 @@ PAID + Paid_Time
       การเปิด **Is a part of?** ทำให้พนักงานสามารถเพิ่มรายการอาหารหลายรายการภายใน
       Order Form เดียวได้
 
-
+      **หมายเหตุ การเปลี่ยนสกุลเงิน
+     ![Currency](assets/L2-5.png)
 ------------------------------------------------------------------------
 
-# 3. เชื่อม Google Sheets กับ AppSheet
+# Step 3. สร้างหน้า Page Menu
 
-1.  เปิด AppSheet
-2.  เลือก **Create → App → Start with existing data**
-3.  เลือก Google Sheets ที่เตรียมไว้
-4.  เพิ่ม Table:
-    -   `Menu`
-    -   `Tables`
-    -   `Orders`
-    -   `Order_details`
-5.  ตรวจสอบชนิดข้อมูลใน **Data → Columns**
+1.  เลือก UX -> New View -> Creat a new view
+2.  ตั้งค่า
+   ``` text
+      View name: Menu
+      For this data: Menu
+      View type: Deck
+      Group by: Category   (แยกประเภทเมนู)
+   ```
+3. สามารถแก้ไขเพิ่มข้อมูลและรูปภาพ
+   ![step3-1](assets/L2-3.png)
 
+   ![step3-1](assets/L2-4.png)
 ------------------------------------------------------------------------
 
-# 4. สร้างความสัมพันธ์ระหว่างตาราง
-
-โครงสร้างความสัมพันธ์คือ
-
-``` text
-Tables
-   │
-   └── Orders
-          │
-          └── Order_details
-                    │
-                    └── Menu
-```
-
-กำหนด Ref:
-
-``` text
-Orders[Table_ID]
-       → Tables
-
-Order_details[Order_ID]
-       → Orders
-
-Order_details[Menu_ID]
-       → Menu
-```
-
-เมื่อสร้าง Ref ถูกต้อง AppSheet จะสร้าง Reverse Reference เช่น
-
-``` text
-Related Orders
-Related Order_details
-```
-
-ให้อัตโนมัติ
 
 ------------------------------------------------------------------------
 
