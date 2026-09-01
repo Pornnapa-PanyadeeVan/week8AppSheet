@@ -80,12 +80,19 @@ PAID + Paid_Time
 1. เลือก DATA -> click เลือก Add Table ทั้ง 3 Table
    ![Step2-1](assets/L02-2.png)
 2. ตรวจสอบและกำหนด Key ของแต่ละ Table
-   ![Step2-1](assets/L2-1.mp4)
+   
+   <video controls width="800">
+        <source src="assets/L2-1.mp4" type="video/mp4">
+   </video>
+   
    **Table: `Menu`** ใช้เก็บรายการอาหาร
+   
    แนะนำให้กำหนด `Menu_ID` เป็น **Key**
+   
    **Table: `Tables`** ใช้เก็บข้อมูลโต๊ะ
       -   `Table_ID` → Key
       -   `Table_Name` → Label
+      -   
    **Table: `Orders`** เก็บข้อมูลหัวออเดอร์
       ตั้งค่า:
       
