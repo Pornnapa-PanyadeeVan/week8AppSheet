@@ -68,8 +68,19 @@ PAID + Paid_Time
 
 ------------------------------------------------------------------------
 # 2. ขั้นตอนการสร้าง AppSheet
+## Step 1 : สร้าง App
 1. เปิด [Google AppSheet](https://www.appsheet.com/home/apps) ด้วย Account Google เดียวกับ Google Sheets
-2.  
+2. สร้าง App : เลือก Create -> App -> Start with existing data
+3. สร้าง App ชื่อ `LannaEats App` และเลือก Other
+4. กดเลือก Choose your data เพื่อเชื่อม data source
+5. เลือก Data Source : Google Sheets -> เลือก Folder 703311-Week8AppSheet -> เลือก Google Sheets LannaEats App
+   ![Step1](asstes/L01-3.png)
+---
+## Step 2 : ตรวจสอบข้อมูลที่เชื่อม Google Sheets และกำหนด Key
+1. เลือก DATA -> click เลือก Add Table ทั้ง 3 Table
+   ![Step2-1](assets/L02-2.png)
+2. ตรวจสอบและกำหนด Key ของแต่ละ Table
+   
 ------------------------------------------------------------------------
 # 2. เตรียม Google Sheets
 
