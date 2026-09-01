@@ -424,7 +424,7 @@ SERVED
 
 จึงสร้าง Action สำหรับ Payment
 
-![step6 kitchen](assets/L2-19.png)
+
 
 **5.  Action: `Mark Paid`**
 
@@ -455,8 +455,8 @@ Only if:
 ``` appsheet
 [Order_Status] = "SERVED"
 ```
+![step6 kitchen](assets/L2-19.png)
 
-![step6 kitchen](assets/L2-20.png) 
 
 **6. Action: `Table Available`**
 
@@ -477,8 +477,8 @@ Set:
 ``` appsheet
 Table_Status = 0
 ```
+![step6 kitchen](assets/L2-20.png) 
 
-![step6 kitchen](assets/L2-21.png)
 
 **7. Action: `Release Table`**
 
@@ -511,6 +511,7 @@ Referenced Action:
 ``` text
 Table Available
 ```
+![step6 kitchen](assets/L2-21.png)
 
 **8. Grouped Action: `Payment`**
 
@@ -554,6 +555,8 @@ Only if:
 ```
 
 ดังนั้นปุ่ม **ชำระเงิน** จะปรากฏเฉพาะ Order ที่เสิร์ฟแล้ว
+
+![step6 kitchen](assets/L2-22.png)
 
 ------------------------------------------------------------------------
 
