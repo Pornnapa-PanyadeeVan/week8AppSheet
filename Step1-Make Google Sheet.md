@@ -139,5 +139,5 @@ SERVED
        - เลือก New Folder
        - ตั้งชื่อ Folder `703311-Week8AppSheet`
    ![Make Folder](assets/L01-1.png)
-4. สร้าง Google Sheet ชื่อ `LannaEats App`
-5. สร้าง Google Sheets จำนวน 4 Sheet
+4. สร้าง Google Sheet ชื่อ `LannaEats App` โดยมีจำนวน 4 Sheet
+   [Sheet](assets/L01-2.png)
