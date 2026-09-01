@@ -1,12 +1,42 @@
 # Step1 : Google Sheet Structure
 
-ระบบใช้ Google Sheets จำนวน 4 Sheet
+
+
+## Google Sheet Structure
+1. ออกแบบระบบใช้ Google Sheets จำนวน 4 Sheet
 
 ```text
-Tables
-Menu
-Orders
-Order_Details
+Google Sheets
+│
+├── Tables
+│   ├── Table_ID
+│   ├── Table_Name
+│   ├── Capacity
+│   └── Is_Occupied
+│
+├── Menu
+│   ├── Menu_ID
+│   ├── Menu_Name
+│   ├── Category
+│   ├── Price
+│   ├── Is_Available
+│   └── Image
+│
+├── Orders
+│   ├── Order_ID
+│   ├── Order_DateTime
+│   ├── Table_ID
+│   ├── Order_Status
+│   └── Total_Amount
+│
+└── Order_Details
+    ├── Detail_ID
+    ├── Order_ID
+    ├── Menu_ID
+    ├── Quantity
+    ├── Unit_Price
+    ├── Line_Total
+    └── Note
 ```
 
 ## 1. Sheet: `Tables`
@@ -101,38 +131,3 @@ SERVED
 
 ---
 
-## Google Sheet Structure
-
-```text
-Google Sheets
-│
-├── Tables
-│   ├── Table_ID
-│   ├── Table_Name
-│   ├── Capacity
-│   └── Is_Occupied
-│
-├── Menu
-│   ├── Menu_ID
-│   ├── Menu_Name
-│   ├── Category
-│   ├── Price
-│   ├── Is_Available
-│   └── Image
-│
-├── Orders
-│   ├── Order_ID
-│   ├── Order_DateTime
-│   ├── Table_ID
-│   ├── Order_Status
-│   └── Total_Amount
-│
-└── Order_Details
-    ├── Detail_ID
-    ├── Order_ID
-    ├── Menu_ID
-    ├── Quantity
-    ├── Unit_Price
-    ├── Line_Total
-    └── Note
-```
