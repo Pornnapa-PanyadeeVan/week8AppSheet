@@ -390,6 +390,8 @@ PAID
 NEW → PREPARING → SERVED → PAID
 ```
 
+![step6 kitchen](assets/L2-17.png)
+
 **3. ให้แก้สถานะจากหน้า Detail**
 
 ไปที่
@@ -409,6 +411,7 @@ READY
   ↓
 SERVED
 ```
+![step6 kitchen](assets/L2-18.png)
 
 **4. สร้างปุ่ม "ชำระเงิน"**
 
@@ -420,6 +423,8 @@ SERVED
 3.  คืนสถานะโต๊ะเป็นว่าง
 
 จึงสร้าง Action สำหรับ Payment
+
+![step6 kitchen](assets/L2-19.png)
 
 **5.  Action: `Mark Paid`**
 
@@ -451,6 +456,8 @@ Only if:
 [Order_Status] = "SERVED"
 ```
 
+![step6 kitchen](assets/L2-20.png) 
+
 **6. Action: `Table Available`**
 
 Table:
@@ -470,6 +477,8 @@ Set:
 ``` appsheet
 Table_Status = 0
 ```
+
+![step6 kitchen](assets/L2-21.png)
 
 **7. Action: `Release Table`**
 
