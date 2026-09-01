@@ -1,4 +1,4 @@
-# Google Sheet Structure
+# Step1 : Google Sheet Structure
 
 ระบบใช้ Google Sheets จำนวน 4 Sheet
 
