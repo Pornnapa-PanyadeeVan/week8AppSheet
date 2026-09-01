@@ -162,8 +162,26 @@ PAID + Paid_Time
       For this data: Orders
       View type: Table
    ```
-    ![step3-1](assets/L2-5.png)
     ![step3-1](assets/L2-6.png)
+    ![step3-1](assets/L2-7.png)
+
+3. คำนวณยอดรวม Order
+      ใน Orders[Total_Amount] ใช้รายการลูกของ Order มารวมกัน
+      ``` appsheet
+      SUM([Related Order_details][Subtotal])
+      ```
+      
+      เมื่อเพิ่มอาหาร เช่น
+      
+      ``` text
+      ข้าวซอยไก่  × 2   = 138
+      ชาเย็น      × 1   = 29
+      ```
+      
+      ระบบจะคำนวณ Total Amount ให้อัตโนมัติ
+      ![step3-1](assets/L2-8.png)
+   
+
 
 ------------------------------------------------------------------------
 
