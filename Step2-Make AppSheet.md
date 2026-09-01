@@ -74,7 +74,7 @@ PAID + Paid_Time
 3. สร้าง App ชื่อ `LannaEats App` และเลือก Other
 4. กดเลือก Choose your data เพื่อเชื่อม data source
 5. เลือก Data Source : Google Sheets -> เลือก Folder 703311-Week8AppSheet -> เลือก Google Sheets LannaEats App
-   ![Step1](asstes/L01-3.png)
+   ![Step1](assets/L01-3.png)
 ---
 ## Step 2 : ตรวจสอบข้อมูลที่เชื่อม Google Sheets และกำหนด Key
 1. เลือก DATA -> click เลือก Add Table ทั้ง 3 Table
