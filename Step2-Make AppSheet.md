@@ -184,29 +184,29 @@ PAID + Paid_Time
       ![Step4-cal](assets/L2-12.png)
 
 5.เลือกเฉพาะโต๊ะที่ว่าง
-      **Data → Columns → Orders → Table_ID**
-       กำหนด `Valid If`
+**Data → Columns → Orders → Table_ID**
+กำหนด `Valid If`
       
-      ``` appsheet
-      SELECT(
-        Tables[Table_ID],
-        [Table_Status] = 0
-      )
-      ```
+``` appsheet
+SELECT(
+Tables[Table_ID],
+[Table_Status] = 0
+)
+```
       
-      ผลคือ Dropdown เลือกโต๊ะจะแสดงเฉพาะโต๊ะว่าง
+ผลคือ Dropdown เลือกโต๊ะจะแสดงเฉพาะโต๊ะว่าง
       
-      ตัวอย่าง:
+ตัวอย่าง:
       
-      ``` text
-      โต๊ะ 1
-      โต๊ะ 2
-      โต๊ะ 3
-      ```
+``` text
+โต๊ะ 1
+โต๊ะ 2
+โต๊ะ 3
+```
       
-      หากโต๊ะ 1 ถูกใช้งานแล้ว จะไม่ปรากฏให้ Order ใหม่เลือกซ้ำ
+หากโต๊ะ 1 ถูกใช้งานแล้ว จะไม่ปรากฏให้ Order ใหม่เลือกซ้ำ
 
-      ![step3-1](assets/L2-9.png)
+![step3-1](assets/L2-9.png)
 
 6. เปลี่ยนโต๊ะเป็นไม่ว่างเมื่อรับ Order
       สร้าง Action ที่ Table `Tables`
