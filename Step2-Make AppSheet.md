@@ -317,28 +317,45 @@ Row filter condition:
 ------------------------------------------------------------------------
 # Step 6. สร้างหน้า KITCHEN & PAYMENT
 
-    ### 1. สร้าง View
+1. สร้าง View:
 
-      - **View name:** `KITCHEN & PAYMENT`
-      - **For this data:** `Active_Orders`
-      - **View type:** `Table`
-      - **Group by:** `Table_ID`
-      
-      ### แสดงข้อมูล
-      
-      - `Order_Status`
-      - `Order_Time`
-      - `Total_Amount`
-      
-      ### ตัวอย่าง
-      
-      | Table | Total | Status | Time |
-      |---|---:|---|---|
-      | โต๊ะ 1 | ฿138 | SERVED | 12:56 |
-      | โต๊ะ 2 | ฿196 | NEW | 13:02 |
+``` text
+View name:
+KITCHEN & PAYMENT
+
+For this data:
+Active_Orders
+
+View type:
+Table
+```
+
+แนะนำให้ Group by:
+
+``` text
+Table_ID
+```
+
+และแสดงข้อมูล:
+
+``` text
+Order_Status
+Order_Time
+Total_Amount
+```
+
+ตัวอย่าง:
+
+``` text
+โต๊ะ 1      ฿138
+   SERVED   12:56
+
+โต๊ะ 2      ฿196
+   NEW      13:02
+```
                   
 
-
+![step6 kitchen](assets/L2-16.png)
 ------------------------------------------------------------------------
 
 # 13. สร้าง Dropdown สถานะ Order
