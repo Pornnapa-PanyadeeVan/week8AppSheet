@@ -1,9 +1,7 @@
-# Step1 : Google Sheet Structure
-
-
+# Step 1: Google Sheet Structure
 
 ## Google Sheet Structure
-1. ออกแบบระบบใช้ Google Sheets จำนวน 4 Sheet
+1. ออกแบบระบบโดยใช้ Google Sheets จำนวน 4 ชีต
 
 ```text
 Google Sheets
@@ -16,10 +14,11 @@ Google Sheets
 │
 ├── Menu
 │   ├── Menu_ID
-│   ├── Menu_Name
+│   ├── Name_th
+│   ├── Name_en
 │   ├── Category
 │   ├── Price
-│   ├── Is_Available
+│   ├── Is_Active
 │   └── Image
 │
 ├── Orders
@@ -27,7 +26,7 @@ Google Sheets
 │   ├── Order_DateTime
 │   ├── Table_ID
 │   ├── Order_Status
-│   └── Total_Amount
+│   ├── Total_Amount
 │   └── Paid_DateTime
 │
 └── Order_Details
@@ -64,22 +63,22 @@ Google Sheets
 
 | Column         | Description   | Example     |
 | -------------- | ------------- | ----------- |
-| `Menu_ID`      | รหัสเมนู      | M001        |
-| `Name_th`    | ชื่อเมนูไทย      | ข้าวซอยไก่  |
-| `Name_en`    | ชื่อเมนูอังกฤษ      | Khao Soi Chicken  |
+| `Menu_ID`      | รหัสเมนู      | M01         |
+| `Name_th`      | ชื่อเมนูไทย   | ข้าวซอยไก่ |
+| `Name_en`      | ชื่อเมนูอังกฤษ | Khao Soi Chicken |
 | `Category`     | ประเภทเมนู    | Food        |
-| `Price`        | ราคา          | 55          |
-| `Is_Active` | สถานะพร้อมขาย 0 = ไม่พร้อม, 1 = พร้อม | 1        |
-| `Image`        | รูปภาพเมนู    | menu001.jpg |
+| `Price`        | ราคา          | 69          |
+| `Is_Active`    | สถานะพร้อมขาย 0 = ไม่พร้อม, 1 = พร้อม | 1 |
+| `Image`        | รูปภาพเมนู    | menu01.jpg  |
 
 ตัวอย่างข้อมูล
 
-| Menu_ID | Menu_Name    | Category | Price | Is_Available | Image |
-| ------- | ------------ | -------- | ----: | ------------ | ----- |
-| M001    | ข้าวซอยไก่   | Food     |    55 | 1         |       |
-| M002    | ข้าวซอยเนื้อ | Food     |    65 | 1      |       |
-| M003    | ข้าวซอยเจ    | Food     |    55 | 1        |       |
-| M004    | ชาเย็น       | Drink    |    25 | 1       |       |
+| Menu_ID | Name_th      | Name_en          | Category | Price | Is_Active | Image |
+| ------- | ------------ | ---------------- | -------- | ----: | --------: | ----- |
+| M01     | ข้าวซอยไก่   | Khao Soi Chicken | Food     |    69 |         1 |       |
+| M02     | ข้าวซอยเนื้อ | Khao Soi Beef    | Food     |    79 |         1 |       |
+| M03     | ข้าวซอยเจ    | Vegan Khao Soi   | Food     |    69 |         1 |       |
+| M04     | ชาเย็น       | Thai Milk Tea    | Drink    |    29 |         1 |       |
 
 ---
 
@@ -91,14 +90,14 @@ Google Sheets
 | `Order_DateTime` | วันที่และเวลาสั่ง | 31/08/2026 18:30 |
 | `Table_ID`       | รหัสโต๊ะ          | T01              |
 | `Order_Status`   | สถานะ Order       | NEW              |
-| `Total_Amount`   | ยอดรวม Order      | 135              |
-| `Paid_DateTime`   | วันที่และเวลาจ่ายเงิน      | 31/08/2026 19:30 |
+| `Total_Amount`  | ยอดรวม Order      | 167              |
+| `Paid_DateTime` | วันที่และเวลาจ่ายเงิน | 31/08/2026 19:30 |
 
 ตัวอย่างข้อมูล
 
-| Order_ID | Order_DateTime   | Table_ID | Order_Status | Total_Amount | Total_Amount |
-| -------- | ---------------- | -------- | ------------ | -----------: | -----------: |
-| ORD001   | 31/08/2026 18:30 | T01      | NEW          |          135 |              |
+| Order_ID | Order_DateTime   | Table_ID | Order_Status | Total_Amount | Paid_DateTime |
+| -------- | ---------------- | -------- | ------------ | -----------: | ------------- |
+| ORD001   | 31/08/2026 18:30 | T01      | NEW          |          167 |               |
 
 สถานะ Order ที่ใช้
 
@@ -107,6 +106,7 @@ NEW
 COOKING
 READY
 SERVED
+PAID
 ```
 
 ---
@@ -117,27 +117,27 @@ SERVED
 | ------------ | ------------- | --------- |
 | `Detail_ID`  | รหัสรายการ    | D001      |
 | `Order_ID`   | รหัส Order    | ORD001    |
-| `Menu_ID`    | รหัสเมนู      | M001      |
+| `Menu_ID`    | รหัสเมนู      | M01       |
 | `Quantity`   | จำนวน         | 2         |
-| `Unit_Price` | ราคาต่อหน่วย  | 55        |
-| `Total    ` | ราคารวมรายการ | 110       |
+| `Unit_Price` | ราคาต่อหน่วย  | 69        |
+| `Total`      | ราคารวมรายการ | 138       |
 | `Note`       | หมายเหตุ      | ไม่ใส่หอม |
 
 ตัวอย่างข้อมูล
 
-| Detail_ID | Order_ID | Menu_ID | Quantity | Unit_Price |    Total   | Note     |
-| --------- | -------- | ------- | -------: | ---------: | ---------: | -------- |
-| D001      | ORD001   | M001    |        2 |         55 |        110 |          |
-| D002      | ORD001   | M004    |        1 |         25 |         25 | หวานน้อย |
+| Detail_ID | Order_ID | Menu_ID | Quantity | Unit_Price | Total | Note     |
+| --------- | -------- | ------- | -------: | ---------: | ----: | -------- |
+| D001      | ORD001   | M01     |        2 |         69 |   138 |          |
+| D002      | ORD001   | M04     |        1 |         29 |    29 | หวานน้อย |
 
 ---
 
 ## วิธีการสร้าง Google Sheet
-1. เข้า [Google Drive](https://drive.google.com/drive/home) โดยใช้ Account Google ในการ login
-2. สร้าง folder ชื่อ `703311-Week8AppSheet`
+1. เข้า [Google Drive](https://drive.google.com/drive/home) และลงชื่อเข้าใช้บัญชี Google
+2. สร้างโฟลเดอร์ชื่อ `703311-Week8AppSheet`
        - เลือก + New
        - เลือก New Folder
-       - ตั้งชื่อ Folder `703311-Week8AppSheet`
+       - ตั้งชื่อโฟลเดอร์ `703311-Week8AppSheet`
    ![Make Folder](assets/L01-1.png)
-4. สร้าง Google Sheet ชื่อ `LannaEats App` โดยมีจำนวน 4 Sheet
+3. สร้าง Google Sheet ชื่อ `LannaEats App` และเพิ่มให้ครบ 4 ชีต
    ![Sheet](assets/L01-2.png)

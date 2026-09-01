@@ -1,11 +1,11 @@
-## 🧭 Guideline / สารบัญ
+## 🧭 สารบัญ
 
 กดหัวข้อเพื่อไปยังเนื้อหา
 1. [ภาพรวมระบบ](#1-ภาพรวมระบบ)
-2. [เตรียม Google Sheets](#2-เตรียม-google-sheets)
-3. [เชื่อม Google Sheets กับ AppSheet](#3-เชื่อม-google-sheets-กับ-appsheet)
-4. [สร้างความสัมพันธ์ระหว่างตาราง](#4-สร้างความสัมพันธ์ระหว่างตาราง)
-5. [คำนวณราคาของแต่ละเมนู](#5-คำนวณราคาของแต่ละเมนู)
+2. [ขั้นตอนการสร้าง AppSheet](#2-ขั้นตอนการสร้าง-appsheet)
+3. [สรุป Data Flow](#สรุป-data-flow)
+4. [Business Process ที่ระบบรองรับ](#business-process-ที่ระบบรองรับ)
+5. [ผลลัพธ์สุดท้าย](#ผลลัพธ์สุดท้าย)
 
 
 # คู่มือสร้างแอป Restaurant Order Management ด้วย Google AppSheet
@@ -47,87 +47,98 @@ NEW → COOKING/READY → SERVED
       ↓
 ชำระเงิน
       ↓
-PAID + Paid_Time
+PAID + Paid_DateTime
       ↓
 คืนโต๊ะเป็นว่าง
 ```
 
 ------------------------------------------------------------------------
-# 2. ขั้นตอนการสร้าง AppSheet
-## Step 1 : สร้าง App
-1. เปิด [Google AppSheet](https://www.appsheet.com/home/apps) ด้วย Account Google เดียวกับ Google Sheets
-2. สร้าง App : เลือก Create -> App -> Start with existing data
+## 2. ขั้นตอนการสร้าง AppSheet
+
+### Step 1: สร้าง App
+
+1. เปิด [Google AppSheet](https://www.appsheet.com/home/apps) ด้วยบัญชี Google เดียวกับ Google Sheets
+2. สร้าง App: เลือก Create → App → Start with existing data
 3. สร้าง App ชื่อ `LannaEats App` และเลือก Other
-4. กดเลือก Choose your data เพื่อเชื่อม data source
-5. เลือก Data Source : Google Sheets -> เลือก Folder 703311-Week8AppSheet -> เลือก Google Sheets LannaEats App
+4. กด Choose your data เพื่อเชื่อม Data Source
+5. เลือก Google Sheets → โฟลเดอร์ `703311-Week8AppSheet` → Google Sheet `LannaEats App`
    ![Step1](assets/L01-3.png)
 ---
-## Step 2 : ตรวจสอบข้อมูลที่เชื่อม Google Sheets และกำหนด Key
-1. เลือก DATA -> click เลือก Add Table ทั้ง 3 Table
+### Step 2: ตรวจสอบข้อมูลที่เชื่อม Google Sheets และกำหนด Key
+
+1. เลือก DATA → Add Table แล้วเพิ่มอีก 3 ตาราง ได้แก่ `Menu`, `Orders` และ `Order_Details`
    ![Step2-1](assets/L02-2.png)
 2. ตรวจสอบและกำหนด Key ของแต่ละ Table
-   
-   **Table: `Menu`** ใช้เก็บรายการอาหาร
-   
-   แนะนำให้กำหนด `Menu_ID` เป็น **Key**
-   
-   **Table: `Tables`** ใช้เก็บข้อมูลโต๊ะ
-      -   `Table_ID` → Key
-      -   `Table_Name` → Label
-          
-   **Table: `Orders`** เก็บข้อมูลหัวออเดอร์
-      ตั้งค่า:
-      
-      -   `Order_ID` → Key
-      -   `Table_ID` → Ref → `Tables`
-      -   `Order_Time` → DateTime
-      -   `Order_Status` → Enum
-      -   `Total_Amount` → Price
-      -   `Paid_Time` → DateTime
-      -   ### ค่าเริ่มต้นของ Order
 
-      `Order_ID`
-      
-      ``` appsheet
-      UNIQUEID()
-      ```
-      
-      `Order_Time`
-      
-      ``` appsheet
-      NOW()
-      ```
-      
-      `Order_Status`
-      
-      ``` appsheet
-      "NEW"
-      ```
-      
-      > **สำคัญ:** ไม่ใส่ `NOW()` ใน Initial Value ของ `Paid_Time`
-      > เพราะต้องบันทึกเวลานี้เฉพาะตอนชำระเงินจริง
-      
-     **Table: `Orders`** เก็บข้อมูลหัวออเดอร์
-         ตั้งค่า:
-      
-      -   `Detail_ID` → Key
-      -   `Order_ID` → Ref → `Orders`
-      -   เปิด **Is a part of?** ที่ `Order_ID`
-      -   `Menu_ID` → Ref → `Menu`
-      -   `Quantity` → Number
-      -   `Unit_Price` → Price
-      -   `Subtotal` → Price
-      
-      การเปิด **Is a part of?** ทำให้พนักงานสามารถเพิ่มรายการอาหารหลายรายการภายใน
-      Order Form เดียวได้
+[▶️ ดูวิดีโอ](assets/L2-1-github.mp4)
 
-      **หมายเหตุ การเปลี่ยนสกุลเงิน
-     <img src="assets/L2-5.png" alt="Currency" width="400">
+#### Table: `Menu`
+
+ใช้เก็บรายการอาหาร โดยกำหนด `Menu_ID` เป็น **Key**
+
+#### Table: `Tables`
+
+- `Table_ID` → Key
+- `Table_Name` → Label
+
+#### Table: `Orders`
+
+ใช้เก็บข้อมูลหัวออเดอร์ โดยตั้งค่าดังนี้
+
+- `Order_ID` → Key
+- `Table_ID` → Ref → `Tables`
+- `Order_DateTime` → DateTime
+- `Order_Status` → Enum
+- `Total_Amount` → Price
+- `Paid_DateTime` → DateTime
+
+##### ค่าเริ่มต้นของ Order
+
+`Order_ID`
+
+```appsheet
+UNIQUEID()
+```
+
+`Order_DateTime`
+
+```appsheet
+NOW()
+```
+
+`Order_Status`
+
+```appsheet
+"NEW"
+```
+
+> **สำคัญ:** ไม่ใส่ `NOW()` ใน Initial Value ของ `Paid_DateTime`
+> เพราะต้องบันทึกเวลานี้เฉพาะตอนชำระเงินจริง
+
+#### Table: `Order_Details`
+
+ใช้เก็บรายการอาหารของแต่ละออเดอร์ โดยตั้งค่าดังนี้
+
+- `Detail_ID` → Key
+- `Order_ID` → Ref → `Orders`
+- เปิด **Is a part of?** ที่ `Order_ID`
+- `Menu_ID` → Ref → `Menu`
+- `Quantity` → Number
+- `Unit_Price` → Price
+- `Total` → Number
+
+การเปิด **Is a part of?** ทำให้พนักงานสามารถเพิ่มรายการอาหารหลายรายการภายใน
+Order Form เดียวได้
+
+**หมายเหตุ:** การเปลี่ยนสกุลเงิน
+
+<img src="assets/L2-5.png" alt="Currency" width="400">
+
 ------------------------------------------------------------------------
 
-# Step 3. สร้างหน้า Page Menu
+### Step 3: สร้างหน้า Menu
 
-1.  เลือก UX -> New View -> Creat a new view
+1.  เลือก UX → New View → Create a new view
 2.  ตั้งค่า
    ``` text
       View name: Menu
@@ -140,8 +151,8 @@ PAID + Paid_Time
 
    ![step3-1](assets/L2-4.png)
 ------------------------------------------------------------------------
-# Step 4. สร้างหน้า Page Order
-1. เลือก UX -> New View -> Creat a new view
+### Step 4: สร้างหน้า Order
+1. เลือก UX → New View → Create a new view
 2. ตั้งค่า
    ``` text
       View name: Order
@@ -154,7 +165,7 @@ PAID + Paid_Time
 3. คำนวณยอดรวม Order
       ใน Orders[Total_Amount] ใช้รายการลูกของ Order มารวมกัน
       ``` appsheet
-      SUM([Related Order_details][Subtotal])
+      SUM([Related Order_details][Total])
       ```
       
       เมื่อเพิ่มอาหาร เช่น
@@ -168,7 +179,7 @@ PAID + Paid_Time
       ![step3-1](assets/L2-8.png)
 
 4. คำนวณราคาของแต่ละเมนู
-   ใน `Order_details[Unit_Price]` สามารถดึงราคาจาก Menu
+   ใน `Order_Details[Unit_Price]` สามารถดึงราคาจาก Menu
 
       ตัวอย่าง App Formula:
       
@@ -176,14 +187,14 @@ PAID + Paid_Time
       [Menu_ID].[Price]
       ```
       
-      จากนั้น `Subtotal`
+      จากนั้นกำหนด `Total`
       
       ``` appsheet
       [Quantity] * [Unit_Price]
       ```
       ![Step4-cal](assets/L2-12.png)
 
-5.เลือกเฉพาะโต๊ะที่ว่าง
+5. เลือกเฉพาะโต๊ะที่ว่าง
 **Data → Columns → Orders → Table_ID**
 กำหนด `Valid If`
       
@@ -268,15 +279,16 @@ Tables[Table_ID],
       ```
       ![step3-1](assets/L2-10.png)
 
-      **เพิ่ม Action ใน View ของ Order
+      **เพิ่ม Action ใน View ของ Order**
           ![step3-1](assets/L2-13.png)
 
-8.  ปรับรูปการแสดงผลของ Order Detail
+7.  ปรับรูปการแสดงผลของ Order Detail
    
      ![step4-11](assets/L2-11.png)
     
 **Output Step 4**
-    ![Step4-out](assets/L2-14.png)
+
+![Step4-out](assets/L2-14.png)
     
 
 
@@ -285,7 +297,7 @@ Tables[Table_ID],
       
 ------------------------------------------------------------------------
 
-# Step 5. สร้าง Active Orders
+### Step 5: สร้าง Active Orders
 ไม่ต้องการให้ Order ที่จ่ายเงินแล้วอยู่ในหน้าครัว จึงสร้าง Slice
 
 ไปที่:
@@ -315,7 +327,7 @@ Row filter condition:
 ![Activeorder](assets/L2-15.png)
 
 ------------------------------------------------------------------------
-# Step 6. สร้างหน้า KITCHEN & PAYMENT
+### Step 6: สร้างหน้า KITCHEN & PAYMENT
 
 **1. สร้าง View:**
 
@@ -340,7 +352,7 @@ Table_ID
 
 ``` text
 Order_Status
-Order_Time
+Order_DateTime
 Total_Amount
 ```
 
@@ -419,7 +431,7 @@ SERVED
 เพราะตอนชำระเงินระบบต้องทำหลายอย่างพร้อมกัน:
 
 1.  เปลี่ยนสถานะเป็น `PAID`
-2.  บันทึก `Paid_Time`
+2.  บันทึก `Paid_DateTime`
 3.  คืนสถานะโต๊ะเป็นว่าง
 
 จึงสร้าง Action สำหรับ Payment
@@ -447,7 +459,7 @@ Order_Status = "PAID"
 ```
 
 ``` appsheet
-Paid_Time = NOW()
+Paid_DateTime = NOW()
 ```
 
 Only if:
@@ -560,9 +572,12 @@ Only if:
 
 ![step6 kitchen](assets/L2-23.png)
 
+
+[▶️ ดูวิดีโอ](assets/LO-2-github.mp4)
+
 ------------------------------------------------------------------------
 
-# Set 7. Workflow การชำระเงิน
+### Step 7: Workflow การชำระเงิน
 
 เมื่อพนักงานกด
 
@@ -577,7 +592,7 @@ Payment
    │
    ├── Mark Paid
    │      ├── Order_Status = PAID
-   │      └── Paid_Time = NOW()
+   │      └── Paid_DateTime = NOW()
    │
    └── Release Table
           └── Table_Status = 0
@@ -605,7 +620,7 @@ Table_Status = 0
 
 ------------------------------------------------------------------------
 
-# สรุป Data Flow
+## สรุป Data Flow
 
 ``` text
                  ┌─────────────┐
@@ -613,7 +628,7 @@ Table_Status = 0
                  └──────┬──────┘
                         │ Ref
                         ▼
-Customer → Staff → Order_details
+Customer → Staff → Order_Details
                         │
                         ▼
                     Orders
@@ -631,7 +646,7 @@ Customer → Staff → Order_details
 
 ------------------------------------------------------------------------
 
-# Business Process ที่ระบบรองรับ
+## Business Process ที่ระบบรองรับ
 
 ระบบนี้ไม่ได้เป็นเพียงหน้ารับ Order แต่เป็น Workflow เชื่อมงานหน้าร้าน ครัว
 และการชำระเงิน
