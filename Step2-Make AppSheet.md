@@ -80,126 +80,58 @@ PAID + Paid_Time
 1. เลือก DATA -> click เลือก Add Table ทั้ง 3 Table
    ![Step2-1](assets/L02-2.png)
 2. ตรวจสอบและกำหนด Key ของแต่ละ Table
-   
-------------------------------------------------------------------------
-# 2. เตรียม Google Sheets
+   ![Step2-1](assets/L2-1.mp4)
+   **Table: `Menu`** ใช้เก็บรายการอาหาร
+   แนะนำให้กำหนด `Menu_ID` เป็น **Key**
+   **Table: `Tables`** ใช้เก็บข้อมูลโต๊ะ
+      -   `Table_ID` → Key
+      -   `Table_Name` → Label
+   **Table: `Orders`** เก็บข้อมูลหัวออเดอร์
+      ตั้งค่า:
+      
+      -   `Order_ID` → Key
+      -   `Table_ID` → Ref → `Tables`
+      -   `Order_Time` → DateTime
+      -   `Order_Status` → Enum
+      -   `Total_Amount` → Price
+      -   `Paid_Time` → DateTime
+      -   ### ค่าเริ่มต้นของ Order
 
-สร้าง Google Sheets สำหรับเป็นฐานข้อมูลของแอป โดยแนะนำให้มีอย่างน้อย 4 Sheet
+      `Order_ID`
+      
+      ``` appsheet
+      UNIQUEID()
+      ```
+      
+      `Order_Time`
+      
+      ``` appsheet
+      NOW()
+      ```
+      
+      `Order_Status`
+      
+      ``` appsheet
+      "NEW"
+      ```
+      
+      > **สำคัญ:** ไม่ใส่ `NOW()` ใน Initial Value ของ `Paid_Time`
+      > เพราะต้องบันทึกเวลานี้เฉพาะตอนชำระเงินจริง
+      
+     **Table: `Orders`** เก็บข้อมูลหัวออเดอร์
+         ตั้งค่า:
+      
+      -   `Detail_ID` → Key
+      -   `Order_ID` → Ref → `Orders`
+      -   เปิด **Is a part of?** ที่ `Order_ID`
+      -   `Menu_ID` → Ref → `Menu`
+      -   `Quantity` → Number
+      -   `Unit_Price` → Price
+      -   `Subtotal` → Price
+      
+      การเปิด **Is a part of?** ทำให้พนักงานสามารถเพิ่มรายการอาหารหลายรายการภายใน
+      Order Form เดียวได้
 
-## 2.1 Sheet: `Menu`
-
-ใช้เก็บรายการอาหาร
-
-  Column           ตัวอย่าง             หน้าที่
-  ---------------- ------------------ --------------
-  `Menu_ID`        M001               รหัสเมนู / Key
-  `Menu_Name`      ข้าวซอยไก่           ชื่อเมนู
-  `Menu_Name_EN`   Khao Soi Chicken   ชื่อภาษาอังกฤษ
-  `Category`       noodle             ประเภทอาหาร
-  `Price`          69                 ราคา
-  `Image`          image.jpg          รูปเมนู
-
-แนะนำให้กำหนด `Menu_ID` เป็น **Key**
-
-------------------------------------------------------------------------
-
-## 2.2 Sheet: `Tables`
-
-ใช้เก็บข้อมูลโต๊ะ
-
-  Column           ตัวอย่าง   หน้าที่
-  ---------------- -------- ----------
-  `Table_ID`       T01      รหัสโต๊ะ
-  `Table_Name`     โต๊ะ 1    ชื่อที่แสดง
-  `Table_Status`   0        สถานะโต๊ะ
-
-กำหนดความหมาย:
-
-``` text
-0 = โต๊ะว่าง
-1 = โต๊ะกำลังใช้งาน
-```
-
-ตั้งค่าใน AppSheet:
-
--   `Table_ID` → Key
--   `Table_Name` → Label
-
-------------------------------------------------------------------------
-
-## 2.3 Sheet: `Orders`
-
-เก็บข้อมูลหัวออเดอร์
-
-  Column           ตัวอย่าง           หน้าที่
-  ---------------- ---------------- ---------------
-  `Order_ID`       ORD001           รหัส Order
-  `Table_ID`       T01              โต๊ะ
-  `Order_Time`     1/9/2026 12:56   เวลาเปิด Order
-  `Order_Status`   NEW              สถานะ
-  `Total_Amount`   138              ยอดรวม
-  `Paid_Time`                       เวลาชำระเงิน
-
-ตั้งค่า:
-
--   `Order_ID` → Key
--   `Table_ID` → Ref → `Tables`
--   `Order_Time` → DateTime
--   `Order_Status` → Enum
--   `Total_Amount` → Price
--   `Paid_Time` → DateTime
-
-### ค่าเริ่มต้นของ Order
-
-`Order_ID`
-
-``` appsheet
-UNIQUEID()
-```
-
-`Order_Time`
-
-``` appsheet
-NOW()
-```
-
-`Order_Status`
-
-``` appsheet
-"NEW"
-```
-
-> **สำคัญ:** ไม่ใส่ `NOW()` ใน Initial Value ของ `Paid_Time`
-> เพราะต้องบันทึกเวลานี้เฉพาะตอนชำระเงินจริง
-
-------------------------------------------------------------------------
-
-## 2.4 Sheet: `Order_details`
-
-ใช้เก็บรายการอาหารภายในแต่ละ Order
-
-  Column         ตัวอย่าง   หน้าที่
-  -------------- -------- ---------------
-  `Detail_ID`    D001     Key
-  `Order_ID`     ORD001   Order หลัก
-  `Menu_ID`      M001     เมนู
-  `Quantity`     2        จำนวน
-  `Unit_Price`   69       ราคาต่อหน่วย
-  `Subtotal`     138      ราคารวมรายการ
-  `Note`         ไม่เผ็ด    หมายเหตุ
-
-ตั้งค่า:
-
--   `Detail_ID` → Key
--   `Order_ID` → Ref → `Orders`
--   เปิด **Is a part of?** ที่ `Order_ID`
--   `Menu_ID` → Ref → `Menu`
--   `Quantity` → Number
--   `Unit_Price` → Price
--   `Subtotal` → Price
-
-การเปิด **Is a part of?** ทำให้พนักงานสามารถเพิ่มรายการอาหารหลายรายการภายใน
-Order Form เดียวได้
 
 ------------------------------------------------------------------------
 
