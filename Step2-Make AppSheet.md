@@ -154,7 +154,16 @@ PAID + Paid_Time
 
    ![step3-1](assets/L2-4.png)
 ------------------------------------------------------------------------
-
+# Step 4. สร้างหน้า Page Order
+1. เลือก UX -> New View -> Creat a new view
+2. ตั้งค่า
+   ``` text
+      View name: Order
+      For this data: Orders
+      View type: Table
+   ```
+    ![step3-1](assets/L2-5.png)
+    ![step3-1](assets/L2-6.png)
 
 ------------------------------------------------------------------------
 
