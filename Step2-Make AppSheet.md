@@ -6,21 +6,7 @@
 3. [เชื่อม Google Sheets กับ AppSheet](#3-เชื่อม-google-sheets-กับ-appsheet)
 4. [สร้างความสัมพันธ์ระหว่างตาราง](#4-สร้างความสัมพันธ์ระหว่างตาราง)
 5. [คำนวณราคาของแต่ละเมนู](#5-คำนวณราคาของแต่ละเมนู)
-6. [คำนวณยอดรวม Order](#6-คำนวณยอดรวม-order)
-7. [สร้างหน้า Menu](#7-สร้างหน้า-menu)
-8. [สร้าง Order Form](#8-สร้าง-order-form)
-9. [เลือกเฉพาะโต๊ะที่ว่าง](#9-เลือกเฉพาะโต๊ะที่ว่าง)
-10. [เปลี่ยนโต๊ะเป็นไม่ว่างเมื่อรับ Order](#10-เปลี่ยนโต๊ะเป็นไม่ว่างเมื่อรับ-order)
-11. [สร้าง Active Orders](#11-สร้าง-active-orders)
-12. [สร้างหน้า KITCHEN & PAYMENT](#12-สร้างหน้า-kitchen-payment)
-13. [สร้าง Dropdown สถานะ Order](#13-สร้าง-dropdown-สถานะ-order)
-14. [ให้แก้สถานะจากหน้า Detail](#14-ให้แก้สถานะจากหน้า-detail)
-15. [สร้างปุ่ม "ชำระเงิน"](#15-สร้างปุ่ม-ชำระเงิน)
-16. [Workflow การชำระเงิน](#16-workflow-การชำระเงิน)
-17. [การทำงานจริงของพนักงาน](#17-การทำงานจริงของพนักงาน)
-18. [สรุป Data Flow](#18-สรุป-data-flow)
-19. [Business Process ที่ระบบรองรับ](#19-business-process-ที่ระบบรองรับ)
-20. [Checklist ก่อนใช้งานจริง](#20-checklist-ก่อนใช้งานจริง)
+
 
 # คู่มือสร้างแอป Restaurant Order Management ด้วย Google AppSheet
 
@@ -180,9 +166,93 @@ PAID + Paid_Time
       
       ระบบจะคำนวณ Total Amount ให้อัตโนมัติ
       ![step3-1](assets/L2-8.png)
-   
 
+   4. เลือกเฉพาะโต๊ะที่ว่าง
+      **Data → Columns → Orders → Table_ID**
+       กำหนด `Valid If`
+      
+      ``` appsheet
+      SELECT(
+        Tables[Table_ID],
+        [Table_Status] = 0
+      )
+      ```
+      
+      ผลคือ Dropdown เลือกโต๊ะจะแสดงเฉพาะโต๊ะว่าง
+      
+      ตัวอย่าง:
+      
+      ``` text
+      โต๊ะ 1
+      โต๊ะ 2
+      โต๊ะ 3
+      ```
+      
+      หากโต๊ะ 1 ถูกใช้งานแล้ว จะไม่ปรากฏให้ Order ใหม่เลือกซ้ำ
 
+      ![step3-1](assets/L2-9.png)
+
+   5. เปลี่ยนโต๊ะเป็นไม่ว่างเมื่อรับ Order
+      สร้าง Action ที่ Table `Tables`
+
+      ## Action: `Table Unavailable`
+      
+      ``` text
+      For a record of this table:
+      Tables
+      
+      Do this:
+      Data: set the values of some columns in this row
+      ```
+      
+      กำหนด:
+      
+      ``` appsheet
+      Table_Status = 1
+      ```
+      
+      จากนั้นสร้าง Action ใน `Orders`
+      
+      ## Action: `Mark Selected Table Unavailable`
+      
+      ``` text
+      For a record of this table:
+      Orders
+      
+      Do this:
+      Data: execute an action on a set of rows
+      ```
+      
+      Referenced Table:
+      
+      ``` text
+      Tables
+      ```
+      
+      Referenced Rows:
+      
+      ``` appsheet
+      LIST([Table_ID])
+      ```
+      
+      Referenced Action:
+      
+      ``` text
+      Table Unavailable
+      ```
+      
+      นำ Action นี้ไปกำหนดให้ทำงานหลัง Save Order
+      
+      ``` text
+      Orders_Form
+      → Behavior
+      → Event Actions
+      → Form Saved
+      → Mark Selected Table Unavailable
+      ```
+      ![step3-1](assets/L2-10.png)
+
+      
 ------------------------------------------------------------------------
 
 # 5. คำนวณราคาของแต่ละเมนู
@@ -201,91 +271,8 @@ PAID + Paid_Time
 [Quantity] * [Unit_Price]
 ```
 
-------------------------------------------------------------------------
-
-# 6. คำนวณยอดรวม Order
-
-ใน `Orders[Total_Amount]` ใช้รายการลูกของ Order มารวมกัน
-
-``` appsheet
-SUM([Related Order_details][Subtotal])
-```
-
-เมื่อเพิ่มอาหาร เช่น
-
-``` text
-ข้าวซอยไก่  × 2   = 138
-ชาเย็น      × 1   = 29
-```
-
-ระบบจะคำนวณ Total Amount ให้อัตโนมัติ
 
 ------------------------------------------------------------------------
-
-# 7. สร้างหน้า Menu
-
-สร้าง View จาก Table `Menu`
-
-แนะนำ:
-
-``` text
-View name: Menu
-For this data: Menu
-View type: Deck
-```
-
-ตั้ง Group by:
-
-``` text
-Category
-```
-
-จะแสดงเมนูแยกประเภท เช่น
-
-``` text
-drink
-  ชาเย็น
-
-noodle
-  ข้าวซอยเจ
-  ข้าวซอยเนื้อ
-  ข้าวซอยไก่
-```
-
-แนะนำให้แสดง:
-
--   รูปอาหาร
--   ชื่อเมนู
--   ชื่อภาษาอังกฤษ
--   ราคา
-
-------------------------------------------------------------------------
-
-# 8. สร้าง Order Form
-
-หน้า `Orders_Form` ใช้สำหรับพนักงานเปิดออเดอร์
-
-จัด Column Order ประมาณ:
-
-``` text
-Table_ID
-Related Order_details
-Total_Amount
-```
-
-ไม่จำเป็นต้องให้พนักงานกรอก:
-
-``` text
-Order_ID
-Order_Time
-Order_Status
-Paid_Time
-```
-
-เพราะระบบจัดการให้อัตโนมัติ
-
-------------------------------------------------------------------------
-
 # 9. เลือกเฉพาะโต๊ะที่ว่าง
 
 ที่
