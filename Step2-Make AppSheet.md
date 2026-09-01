@@ -1,6 +1,4 @@
-```{=html}
-<!-- TOC-START -->
-```
+
 ## 🧭 Guideline / สารบัญ
 
 กดหัวข้อด้านล่างเพื่อไปยังขั้นตอนที่ต้องการได้ทันที
@@ -25,9 +23,6 @@
 19. [Business Process ที่ระบบรองรับ](#section-19)
 20. [Checklist ก่อนใช้งานจริง](#section-20)
 
-```{=html}
-<!-- TOC-END -->
-```
 # คู่มือสร้างแอป Restaurant Order Management ด้วย Google AppSheet
 
 > **Use Case:** แอปสำหรับพนักงานร้านอาหาร รับออเดอร์จากลูกค้า → ส่งรายการให้ครัว →
