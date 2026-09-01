@@ -28,6 +28,7 @@ Google Sheets
 │   ├── Table_ID
 │   ├── Order_Status
 │   └── Total_Amount
+│   └── Paid_DateTime
 │
 └── Order_Details
     ├── Detail_ID
@@ -35,7 +36,7 @@ Google Sheets
     ├── Menu_ID
     ├── Quantity
     ├── Unit_Price
-    ├── Line_Total
+    ├── Total
     └── Note
 ```
 
