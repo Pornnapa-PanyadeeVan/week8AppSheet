@@ -81,10 +81,11 @@ PAID + Paid_Time
    ![Step2-1](assets/L02-2.png)
 2. ตรวจสอบและกำหนด Key ของแต่ละ Table
    
-   ### 🎬 Video: การกำหนด Key
+         ### 🎬 Video: การกำหนด Key
 
-[▶️ คลิกเพื่อดูวิดีโอ StepVDO2-1](https://raw.githubusercontent.com/Pornnapa-PanyadeeVan/week8AppSheet/main/assets/L2-1.mp4)
-   
+[![ดูวิดีโอ StepVDO2-1](assets/L02-2.png)](https://raw.githubusercontent.com/Pornnapa-PanyadeeVan/week8AppSheet/main/assets/L2-1.mp4)
+
+> ▶️ คลิกที่รูปเพื่อดูวิดีโอ
    **Table: `Menu`** ใช้เก็บรายการอาหาร
    
    แนะนำให้กำหนด `Menu_ID` เป็น **Key**
