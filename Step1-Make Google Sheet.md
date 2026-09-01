@@ -89,12 +89,12 @@ SERVED
 | `Menu_ID`    | รหัสเมนู      | M001      |
 | `Quantity`   | จำนวน         | 2         |
 | `Unit_Price` | ราคาต่อหน่วย  | 55        |
-| `Line_Total` | ราคารวมรายการ | 110       |
+| `Total    ` | ราคารวมรายการ | 110       |
 | `Note`       | หมายเหตุ      | ไม่ใส่หอม |
 
 ตัวอย่างข้อมูล
 
-| Detail_ID | Order_ID | Menu_ID | Quantity | Unit_Price | Line_Total | Note     |
+| Detail_ID | Order_ID | Menu_ID | Quantity | Unit_Price |    Total   | Note     |
 | --------- | -------- | ------- | -------: | ---------: | ---------: | -------- |
 | D001      | ORD001   | M001    |        2 |         55 |        110 |          |
 | D002      | ORD001   | M004    |        1 |         25 |         25 | หวานน้อย |
