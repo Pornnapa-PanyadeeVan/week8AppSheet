@@ -276,122 +276,13 @@ PAID + Paid_Time
      ![step4-11](assets/L2-11.png)
     
 
-## Output Step 4
+**Output Step 4**
 
       ![Step4-out](assets/L2-14.png)
+      
 ------------------------------------------------------------------------
 
-# 5. คำนวณราคาของแต่ละเมนู
-
-ใน `Order_details[Unit_Price]` สามารถดึงราคาจาก Menu
-
-ตัวอย่าง App Formula:
-
-``` appsheet
-[Menu_ID].[Price]
-```
-
-จากนั้น `Subtotal`
-
-``` appsheet
-[Quantity] * [Unit_Price]
-```
-
-
-------------------------------------------------------------------------
-# 9. เลือกเฉพาะโต๊ะที่ว่าง
-
-ที่
-
-**Data → Columns → Orders → Table_ID**
-
-กำหนด `Valid If`
-
-``` appsheet
-SELECT(
-  Tables[Table_ID],
-  [Table_Status] = 0
-)
-```
-
-ผลคือ Dropdown เลือกโต๊ะจะแสดงเฉพาะโต๊ะว่าง
-
-ตัวอย่าง:
-
-``` text
-โต๊ะ 1
-โต๊ะ 2
-โต๊ะ 3
-```
-
-หากโต๊ะ 1 ถูกใช้งานแล้ว จะไม่ปรากฏให้ Order ใหม่เลือกซ้ำ
-
-------------------------------------------------------------------------
-
-# 10. เปลี่ยนโต๊ะเป็นไม่ว่างเมื่อรับ Order
-
-สร้าง Action ที่ Table `Tables`
-
-## Action: `Table Unavailable`
-
-``` text
-For a record of this table:
-Tables
-
-Do this:
-Data: set the values of some columns in this row
-```
-
-กำหนด:
-
-``` appsheet
-Table_Status = 1
-```
-
-จากนั้นสร้าง Action ใน `Orders`
-
-## Action: `Mark Selected Table Unavailable`
-
-``` text
-For a record of this table:
-Orders
-
-Do this:
-Data: execute an action on a set of rows
-```
-
-Referenced Table:
-
-``` text
-Tables
-```
-
-Referenced Rows:
-
-``` appsheet
-LIST([Table_ID])
-```
-
-Referenced Action:
-
-``` text
-Table Unavailable
-```
-
-นำ Action นี้ไปกำหนดให้ทำงานหลัง Save Order
-
-``` text
-Orders_Form
-→ Behavior
-→ Event Actions
-→ Form Saved
-→ Mark Selected Table Unavailable
-```
-
-------------------------------------------------------------------------
-
-# 11. สร้าง Active Orders
-
+# Step 5. สร้าง Active Orders
 ไม่ต้องการให้ Order ที่จ่ายเงินแล้วอยู่ในหน้าครัว จึงสร้าง Slice
 
 ไปที่:
@@ -420,44 +311,39 @@ Row filter condition:
 
 ------------------------------------------------------------------------
 
-# 12. สร้างหน้า KITCHEN & PAYMENT
+# Step 6. สร้างหน้า KITCHEN & PAYMENT
 
-สร้าง View:
+      1. สร้าง View:
 
-``` text
-View name:
-KITCHEN & PAYMENT
+            ``` text
+            View name: KITCHEN & PAYMENT
+            
+            For this data:  Active_Orders
+          
+            View type:Table
 
-For this data:
-Active_Orders
+             Group by: Table_ID
+            ```
 
-View type:
-Table
-```
+            และแสดงข้อมูล:
+            
+            ``` text
+            Order_Status
+            Order_Time
+            Total_Amount
+            ```
 
-แนะนำให้ Group by:
+            ตัวอย่าง:
+            
+            ``` text
+            โต๊ะ 1      ฿138
+               SERVED   12:56
+            
+            โต๊ะ 2      ฿196
+               NEW      13:02
+            ```
+            
 
-``` text
-Table_ID
-```
-
-และแสดงข้อมูล:
-
-``` text
-Order_Status
-Order_Time
-Total_Amount
-```
-
-ตัวอย่าง:
-
-``` text
-โต๊ะ 1      ฿138
-   SERVED   12:56
-
-โต๊ะ 2      ฿196
-   NEW      13:02
-```
 
 ------------------------------------------------------------------------
 
