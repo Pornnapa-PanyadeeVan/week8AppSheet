@@ -1,10 +1,9 @@
 # Week 8 Lab -  แนวทางสร้างระบบสารสนเทศและ Low-code
 
 **เอกสาร Lab :** <a href="W8-LowCodeLab.pdf" target="_blank">W8-LowCodeLab.pdf</a>  
-**คู่มือ :** <a href="YOUR_GITHUB_LINK" target="_blank">GitHub</a>  
-
+**คู่มือ :** <a href="https://github.com/Pornnapa-PanyadeeVan/week8AppSheet"  target="_blank">GitHub</a>  
 **การส่งงาน :**
-- <a href="YOUR_LOOP_LINK" target="_blank">Microsoft Loop - Project 4 - Automate (ของแต่ละกลุ่ม)</a>
+- Microsoft Loop - Project 4 - Automate (ของแต่ละกลุ่ม)
 - Save PDF และส่งงานเข้า Mango
 
 # LannaEats App
