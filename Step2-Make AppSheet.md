@@ -138,7 +138,7 @@ NOW()
 การเปิด **Is a part of?** ทำให้พนักงานสามารถเพิ่มรายการอาหารหลายรายการภายใน
 Order Form เดียวได้
 
-![Orders-detail](assets/L2-Orders-detail.png)
+![Orders-detail](assets/L2-Order-detail.png)
 
 **หมายเหตุ:** การเปลี่ยนสกุลเงิน
 
