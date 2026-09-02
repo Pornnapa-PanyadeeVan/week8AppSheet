@@ -6,6 +6,7 @@
 3. [สรุป Data Flow](#สรุป-data-flow)
 4. [Business Process ที่ระบบรองรับ](#business-process-ที่ระบบรองรับ)
 5. [ผลลัพธ์สุดท้าย](#ผลลัพธ์สุดท้าย)
+6. [แชร์ลิงก์สำหรับเข้าใช้งานแอป](#แชร์ลิงก์สำหรับเข้าใช้งานแอป)
 
 
 # คู่มือสร้างแอป Restaurant Order Management ด้วย Google AppSheet
@@ -688,3 +689,9 @@ Table Release
 
 เหมาะสำหรับใช้เป็นตัวอย่างการพัฒนา **No-code Business Application** ที่เชื่อม
 Data, Business Rules, Workflow และ User Interface เข้าด้วยกัน
+
+------------------------------------------------------------------------
+
+
+## แชร์ลิงก์สำหรับเข้าใช้งานแอป
+![Share](assets/L2-30.png)
