@@ -13,6 +13,8 @@
 - ติดตามสถานะ `NEW → COOKING → READY → SERVED → PAID`
 - บันทึกเวลาชำระเงินและคืนสถานะโต๊ะเป็นว่าง
 
+![overview](assets/overviewLab8.png)
+
 ## คู่มือการสร้างแอป
 
 1. [Step 1: เตรียมโครงสร้าง Google Sheets](Step1-Make%20Google%20Sheet.md)
