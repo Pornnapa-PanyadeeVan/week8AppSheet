@@ -77,10 +77,13 @@ PAID + Paid_DateTime
 
 ใช้เก็บรายการอาหาร โดยกำหนด `Menu_ID` เป็น **Key**
 
+![Menu](assets/L2-Menu.png)
 #### Table: `Tables`
 
 - `Table_ID` → Key
 - `Table_Name` → Label
+
+![Table](assets/L2-Tables.png)
 
 #### Table: `Orders`
 
@@ -92,6 +95,8 @@ PAID + Paid_DateTime
 - `Order_Status` → Enum
 - `Total_Amount` → Price
 - `Paid_DateTime` → DateTime
+
+
 
 ##### ค่าเริ่มต้นของ Order
 
@@ -116,6 +121,8 @@ NOW()
 > **สำคัญ:** ไม่ใส่ `NOW()` ใน Initial Value ของ `Paid_DateTime`
 > เพราะต้องบันทึกเวลานี้เฉพาะตอนชำระเงินจริง
 
+ ![Orders](assets/L2-Orders.png)
+
 #### Table: `Order_Details`
 
 ใช้เก็บรายการอาหารของแต่ละออเดอร์ โดยตั้งค่าดังนี้
@@ -130,6 +137,8 @@ NOW()
 
 การเปิด **Is a part of?** ทำให้พนักงานสามารถเพิ่มรายการอาหารหลายรายการภายใน
 Order Form เดียวได้
+
+![Orders-detail](assets/L2-Orders-detail.png)
 
 **หมายเหตุ:** การเปลี่ยนสกุลเงิน
 
