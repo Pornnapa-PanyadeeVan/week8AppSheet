@@ -1,6 +1,6 @@
 # Week 8 Lab -  แนวทางสร้างระบบสารสนเทศและ Low-code
 ```text
-เอกสาร Lab : 
+เอกสาร Lab : [W8-LowCodeLab.pdf](W8-LowCodeLab.pdf)
 คู่มือ : Git Hub
 การส่งงาน : - Microsoft Loop - Project 4 - Automate (ของแต่ละกลุ่ม)
            - Save PDF และส่งงานเข้า Mango
