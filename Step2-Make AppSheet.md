@@ -703,4 +703,4 @@ Data, Business Rules, Workflow และ User Interface เข้าด้วย
 
 
 ## แชร์ลิงก์สำหรับเข้าใช้งานแอป
-![Share](assets/L2-30.png)
+![Share](assets/L2-31.png)
